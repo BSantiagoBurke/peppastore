@@ -1,0 +1,135 @@
+.card {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  perspective: 900px;
+  animation: rise 0.6s both;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+.ph {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  max-width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--choco-deep);
+  transform-style: preserve-3d;
+  transition: transform 0.45s var(--ease), box-shadow 0.45s;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+.card:hover .ph {
+  box-shadow: 0 26px 50px -24px rgba(0, 0, 0, 0.6);
+}
+.img {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s var(--ease), opacity 0.5s ease;
+}
+.card:hover .img {
+  transform: scale(1.04);
+}
+.alt {
+  opacity: 0;
+}
+@media (hover: hover) {
+  .card:hover .alt {
+    opacity: 1;
+  }
+}
+.garment {
+  transition: transform 0.6s var(--ease);
+}
+.card:hover .garment {
+  transform: scale(1.05) translateY(-2%);
+}
+.sheen {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(260px circle at var(--gx, 50%) var(--gy, 30%), rgba(255, 255, 255, 0.22), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.card:hover .sheen {
+  opacity: 1;
+}
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--cream);
+  color: var(--choco);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+.low {
+  background: var(--rose);
+  color: var(--choco-deep);
+}
+.quick {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: rgba(46, 35, 30, 0.82);
+  color: var(--cream);
+  padding: 11px;
+  border-radius: 999px;
+  transform: translateY(140%);
+  transition: transform 0.4s var(--ease);
+}
+.card:hover .quick,
+.card:focus-visible .quick {
+  transform: none;
+}
+.card h3 {
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.compare {
+  font-size: 0.8rem;
+  opacity: 0.55;
+}
+.sizes {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  opacity: 0.65;
+}
+.sizes s {
+  opacity: 0.45;
+}
+@media (max-width: 760px) {
+  .card h3 {
+    font-size: 1.15rem;
+  }
+  .quick {
+    display: none;
+  }
+}

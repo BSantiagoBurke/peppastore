@@ -1,0 +1,221 @@
+.drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: min(420px, 100vw);
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  border: 0;
+  padding: 0;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  background: var(--cream);
+  color: var(--choco);
+  box-shadow: -30px 0 60px -30px rgba(0, 0, 0, 0.5);
+  transform: translateX(105%);
+  transition: transform 0.5s var(--ease);
+}
+.drawer[open] {
+  display: flex;
+  flex-direction: column;
+}
+.drawer.visible {
+  transform: none;
+}
+.drawer::backdrop {
+  background: rgba(30, 22, 18, 0.55);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.drawer.visible::backdrop {
+  opacity: 1;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(74, 58, 50, 0.15);
+}
+.head h2 {
+  font-size: 1.9rem;
+}
+.head button {
+  background: none;
+  border: 0;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+}
+.notices {
+  margin: 12px 24px 0;
+  padding: 12px 14px;
+  background: var(--sand);
+  border-radius: 4px;
+  font-size: 0.82rem;
+  display: grid;
+  gap: 6px;
+}
+.notices ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.notices button {
+  justify-self: start;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.list {
+  flex: 1;
+  overflow: auto;
+  padding: 8px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.line {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding-block: 16px;
+  border-bottom: 1px solid rgba(74, 58, 50, 0.12);
+}
+.off {
+  opacity: 0.55;
+}
+.mini {
+  width: 64px;
+  aspect-ratio: 3 / 4;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  background: var(--sand);
+}
+.mini img {
+  object-fit: cover;
+  object-position: center top;
+}
+.line h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+.line small {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.qty button {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(74, 58, 50, 0.3);
+  background: none;
+  line-height: 1;
+}
+.qty button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.removeBtn {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.line .price {
+  font-size: 0.9rem;
+}
+.empty {
+  margin: auto;
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--ink-soft);
+}
+.empty svg {
+  width: 56px;
+  height: 46px;
+  color: var(--rose);
+  margin-bottom: 14px;
+}
+.foot {
+  padding: 20px 24px 26px;
+  border-top: 1px solid rgba(74, 58, 50, 0.15);
+  display: grid;
+  gap: 12px;
+}
+.foot label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.foot select,
+.foot input {
+  width: 100%;
+  font: inherit;
+  font-size: 16px; /* evita el zoom de iOS */
+  font-weight: 400;
+  color: var(--choco);
+  background: #fff;
+  border: 1px solid rgba(74, 58, 50, 0.25);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-top: 4px;
+}
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+.wa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: var(--choco);
+  color: var(--cream);
+  border-radius: 999px;
+  padding: 15px;
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.wa[aria-disabled="true"] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.fine {
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+.phone {
+  user-select: all;
+}

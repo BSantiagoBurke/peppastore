@@ -1,0 +1,96 @@
+.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  background: color-mix(in srgb, var(--choco-deep) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(244, 239, 235, 0.08);
+}
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 16px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.brand svg {
+  width: 30px;
+  height: 25px;
+  color: var(--cream);
+}
+.brand span {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  letter-spacing: 0.32em;
+}
+.nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.nav a {
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.nav a:hover {
+  opacity: 1;
+}
+.bagBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 1px solid rgba(244, 239, 235, 0.3);
+  border-radius: 999px;
+  padding: 8px 16px;
+  min-height: 40px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background 0.25s, border-color 0.25s;
+}
+.bagBtn:hover {
+  background: rgba(244, 239, 235, 0.08);
+  border-color: var(--cream);
+}
+.count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--rose);
+  color: var(--choco-deep);
+  font-size: 0.7rem;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+.bump {
+  animation: bump 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+@keyframes bump {
+  40% {
+    transform: scale(1.45);
+  }
+}
+@media (max-width: 760px) {
+  .nav a {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  .brand span {
+    display: none;
+  }
+}

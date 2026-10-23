@@ -1,0 +1,21 @@
+.page {
+  background: var(--choco);
+  padding-block: 40px 96px;
+}
+.back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.75;
+}
+.back:hover {
+  opacity: 1;
+}
+@media (max-width: 760px) {
+  .page {
+    padding-block: 20px 64px;
+  }
+}

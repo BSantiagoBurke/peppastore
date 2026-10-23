@@ -1,0 +1,35 @@
+.footer {
+  background: var(--choco-deep);
+}
+.inner {
+  padding-block: 90px 48px;
+  display: grid;
+  gap: 56px;
+}
+.logo {
+  width: min(220px, 60%);
+  color: var(--cream);
+  margin: 0 auto;
+  display: block;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  border-top: 1px solid rgba(244, 239, 235, 0.1);
+  padding-top: 24px;
+}
+.row a {
+  text-decoration: none;
+}
+.row a:hover {
+  text-decoration: underline;
+}
+.phone {
+  user-select: all;
+}

@@ -1,0 +1,65 @@
+.story {
+  background: var(--cream);
+  color: var(--choco);
+}
+.inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  padding-block: 110px;
+}
+.story h2 {
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  margin-top: 18px;
+}
+.story h2 em {
+  font-style: italic;
+}
+.eyebrow {
+  color: var(--ink-soft);
+}
+.story p:not(.eyebrow) {
+  max-width: 56ch;
+  margin: 0 0 1.1em;
+  font-size: 1.05rem;
+}
+.story .sign {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.6rem;
+  margin-top: 24px;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 48px;
+  border-top: 1px solid rgba(74, 58, 50, 0.2);
+}
+.facts div {
+  padding: 20px 16px 0 0;
+}
+.facts b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.facts small {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+@media (max-width: 760px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-block: 72px;
+  }
+}
+@media (max-width: 420px) {
+  .facts b {
+    font-size: 1.7rem;
+  }
+}

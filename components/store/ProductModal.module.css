@@ -1,0 +1,40 @@
+.dialog {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--choco);
+  max-width: min(940px, calc(100vw - 32px));
+  width: 100%;
+  max-height: calc(100dvh - 48px);
+  overflow: visible;
+}
+.dialog::backdrop {
+  background: rgba(30, 22, 18, 0.7);
+  backdrop-filter: blur(6px);
+}
+.dialog[open] {
+  animation: pop 0.4s var(--ease);
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+}
+.frame {
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(244, 239, 235, 0.9);
+  color: var(--choco);
+  font-size: 1.3rem;
+  line-height: 1;
+  z-index: 2;
+}

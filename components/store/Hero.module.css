@@ -1,0 +1,133 @@
+@property --mx {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 70%;
+}
+@property --my {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 40%;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  background: radial-gradient(520px circle at var(--mx, 70%) var(--my, 40%), rgba(201, 160, 140, 0.22), transparent 60%);
+  transition: background 0.1s;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* Sin puntero (celular): la luz recorre el hero sola, lento. */
+@media (hover: none), (pointer: coarse) {
+  .hero {
+    animation: drift 16s ease-in-out infinite alternate;
+  }
+  .hero::before {
+    background: radial-gradient(360px circle at var(--mx) var(--my), rgba(201, 160, 140, 0.26), transparent 60%);
+  }
+  .mark {
+    animation: float 16s ease-in-out infinite alternate;
+  }
+}
+@keyframes drift {
+  0% { --mx: 78%; --my: 22%; }
+  25% { --mx: 30%; --my: 34%; }
+  50% { --mx: 62%; --my: 58%; }
+  75% { --mx: 22%; --my: 72%; }
+  100% { --mx: 70%; --my: 44%; }
+}
+@keyframes float {
+  0% { translate: -4px 4px; }
+  25% { translate: 5px 2px; }
+  50% { translate: -2px -4px; }
+  75% { translate: 5px -3px; }
+  100% { translate: -3px 1px; }
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: center;
+  gap: 40px;
+  padding-block: 88px 96px;
+}
+.hero h1 {
+  font-size: clamp(3rem, 8.4vw, 7.4rem);
+  letter-spacing: -0.01em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--rose);
+}
+.eyebrow {
+  opacity: 0.6;
+}
+.lede {
+  max-width: 34ch;
+  margin: 28px 0 36px;
+  font-size: 1.08rem;
+  opacity: 0.82;
+}
+.mark {
+  justify-self: center;
+  width: min(100%, 340px);
+  color: var(--cream);
+  transform: translate(var(--px, 0), var(--py, 0));
+  transition: transform 0.6s var(--ease);
+}
+.mark svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation: reveal 1.8s cubic-bezier(0.6, 0, 0.2, 1) both;
+}
+@keyframes reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0.2;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 44px;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.meta a {
+  text-decoration: none;
+}
+@media (max-width: 760px) {
+  .inner {
+    grid-template-columns: 1fr;
+    padding-block: 56px 64px;
+    gap: 28px;
+  }
+  .mark {
+    width: 150px;
+    justify-self: start;
+    order: -1;
+  }
+}
