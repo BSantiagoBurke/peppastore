@@ -27,7 +27,8 @@ Sin `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` el sitio usa da
 ```bash
 npx supabase login
 npx supabase link --project-ref <ref>      # pide la contraseña de la base
-npx supabase db push --include-seed        # aplica supabase/migrations/ y supabase/seed.sql (seed una sola vez)
+npx supabase db push --linked --include-seed   # primera vez: migraciones + seed
+npx supabase db push --linked                  # después: solo migraciones nuevas
 npm run seed:images                        # sube supabase/seed/images/** al bucket product-images
 npm run db:types                           # regenera lib/supabase/database.types.ts
 ```
@@ -48,6 +49,30 @@ El seed incluye un producto oculto `prueba-qa` (varios talles, uno agotado) para
    ```
 
 Solo los usuarios en `admins` pueden escribir en tablas y Storage.
+
+### URLs y email de recuperación
+
+Authentication → **URL Configuration**:
+
+- Site URL: la URL de producción (ej. `https://peppastore.vercel.app`).
+- Redirect URLs: `http://localhost:3000/**` y `https://peppastore.vercel.app/**`.
+
+Authentication → Emails → **Reset Password**: cambiar el link de la plantilla por
+
+```html
+<a href="{{ .SiteURL }}/admin/auth/callback?token_hash={{ .TokenHash }}&type=recovery&next=/admin/restablecer">Elegir contraseña nueva</a>
+```
+
+Con la plantilla por defecto también funciona, pero solo si el link se abre en el mismo navegador donde se pidió.
+
+## Panel admin (`/admin`)
+
+- Login con email y contraseña, y "Olvidé mi contraseña".
+- Listado con buscador, filtro por categoría y estado, y stock rápido con − / + por talle.
+- Alta y edición: nombre, link, categoría, descripción, precio, precio anterior, talles, estado, etiqueta y orden.
+- Fotos: se comprimen en el navegador (WebP, 1600 px) y se suben al bucket; se reordenan, se elige la principal y se borran.
+- Archivar y restaurar (no se borra nada).
+- Cada cambio se ve en el sitio al instante (`revalidateTag`).
 
 ## Scripts
 

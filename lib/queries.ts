@@ -6,7 +6,8 @@ import { productPublicRowSchema, storeSettingsRowSchema } from "./schemas";
 import { defaultSettings, mockCategories, mockProducts } from "./mock-data";
 import type { Category, Product, StoreSettings } from "./types";
 
-export const TAGS = { products: "products", settings: "settings" } as const;
+export { TAGS } from "./tags";
+import { TAGS } from "./tags";
 
 // Revalidación por tag al guardar desde el admin; los 60 s son la red de seguridad.
 const REVALIDATE_SECONDS = 60;
