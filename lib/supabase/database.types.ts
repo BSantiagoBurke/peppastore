@@ -168,6 +168,7 @@ export type Database = {
     };
     Functions: {
       is_admin: { Args: Record<PropertyKey, never>; Returns: boolean };
+      adjust_stock: { Args: { p_product_id: string; p_size_id: string; p_delta: number }; Returns: number };
     };
     Enums: { [_ in never]: never };
     CompositeTypes: { [_ in never]: never };
